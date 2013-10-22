@@ -6,9 +6,8 @@ Created on Feb 2, 2013
 test
 
 '''
-import logging
 
-from text import BnsTransformer
+from ficlearn.feature_extraction.text import BnsTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.cross_validation import train_test_split
 from sklearn.grid_search import GridSearchCV
@@ -17,6 +16,7 @@ from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.svm import SVC
 from sklearn.datasets import load_files
+import logging
 import numpy as np
 import codecs as cs
 
@@ -28,11 +28,11 @@ corpus = r"/home/dumoulma/dataset/sieve/corpus6"
 label_names = ['relevant', 'spam']
 
 notices = load_files(corpus, categories=label_names, load_content=False)
-data = [cs.open(filename,'r','UTF-8').read() for filename in notices.filenames]
+data = [cs.open(filename, 'r', 'UTF-8').read() for filename in notices.filenames]
 n_samples = len(data)
 print("text read:{0}".format(n_samples))
 
-count = CountVectorizer(max_df=0.5,ngram_range=(1,1), stop_words='english')
+count = CountVectorizer(max_df=0.5, ngram_range=(1, 1), stop_words='english')
 X = count.fit_transform(data)
 Y = notices.target
 
@@ -45,9 +45,10 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Set the parameters by cross-validation
 tuned_parameters = [{'kernel': ['rbf'], 'gamma': 10.0 ** np.arange(-4, -1),
                      'C': 10.0 ** np.arange(-2, 3)},
-                    #{'kernel': ['linear'], 'C': [1, 10, 100, 1000]}
-                    #{'kernel':['poly'], 'C':[0.1,1,10,100],}
+                    # {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}
+                    # {'kernel':['poly'], 'C':[0.1,1,10,100],}
                     ]
+
 
 scores = [
     ('precision', precision_score),
