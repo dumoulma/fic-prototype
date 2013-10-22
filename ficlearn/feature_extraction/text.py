@@ -7,7 +7,7 @@ Created on Feb 2, 2013
 
 import numpy as np
 import scipy.sparse as sp
-from statslib import ltqnorm
+from ficlearn.util.statslib import ltqnorm
 
 from sklearn.base import BaseEstimator
 from sklearn.base import TransformerMixin
