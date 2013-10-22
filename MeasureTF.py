@@ -1,15 +1,16 @@
+#!/usr/bin/env python3
 '''
-Created on Feb 3, 2013
+Perform classification of a corpus using CountVectorizer.
+Displays the metrics from the classification.
+'''
 
-@author: MathieuXPS
-'''
+import codecs as cs
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import cross_validation
 from sklearn import metrics
-from sklearn.datasets import load_files
-import codecs as cs
-                      
+from sklearn.datasets import load_files                  
+
 if __name__ == '__main__':
     corpus = "corpus5"
     label_names = ['relevant', 'spam']

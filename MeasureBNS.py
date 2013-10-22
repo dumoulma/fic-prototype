@@ -1,7 +1,7 @@
+#!/usr/bin/env python3
 '''
-Created on 2013-01-21
-
-@author: Mathieu Dumoulin
+Perform classification of a corpus using BnsVectorizer.
+Displays the metrics from the classification.
 '''
 
 from sklearn.datasets import load_files

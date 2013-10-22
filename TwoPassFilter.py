@@ -1,12 +1,15 @@
+#!/usr/bin/env python3
 '''
-Created on Feb 7, 2013
+Perform two pass classification of a corpus using BNSVectorizer.
+First classify relevant vs. spam
+Second classify relevant vs. not relevant
 
-@author: MathieuXPS
+Displays the metrics from the classification.
 '''
 
+import codecs as cs
 from sklearn.datasets import load_files
 from sklearn import svm
-import codecs as cs
 from ficlearn.feature_extraction.text import BnsVectorizer
 
 if __name__ == '__main__':

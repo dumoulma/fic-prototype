@@ -1,13 +1,13 @@
+#!/usr/bin/env python3
 '''
-Created on Feb 2, 2013
+Optimize the parameters C and gamma of SVM using GridSearchCV for a collection of text vectorized with BNSTransformer
 
-@author: MathieuXPS
-
-test
-
+Search for the best parameter using Cross-validation in a brute-force search of the parameter space. 
 '''
 
-from ficlearn.feature_extraction.text import BnsTransformer
+import logging
+import numpy as np
+import codecs as cs
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.cross_validation import train_test_split
 from sklearn.grid_search import GridSearchCV
@@ -16,9 +16,8 @@ from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.svm import SVC
 from sklearn.datasets import load_files
-import logging
-import numpy as np
-import codecs as cs
+
+from ficlearn.feature_extraction.text import BnsTransformer
 
 # Display progress logs on stdout
 logging.basicConfig(level=logging.INFO,

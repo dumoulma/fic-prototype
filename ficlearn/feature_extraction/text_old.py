@@ -6,10 +6,9 @@ Created on Feb 2, 2013
 
 import numpy as np
 import scipy.sparse as sp
-from ficlearn.util.statslib import ltqnorm
-
 from sklearn.base import BaseEstimator
 from sklearn.base import TransformerMixin
+from ficlearn.util.statslib import ltqnorm
 
 class BnsTransformer(BaseEstimator, TransformerMixin):
     """Transform a count matrix to a normalized BNS or tf–BNS representation

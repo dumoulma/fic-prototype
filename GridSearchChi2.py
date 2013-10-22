@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
 '''
-Created on Feb 2, 2013
+Perform a gridsearch to find the best parameters for the SVM classification algorithm.
 
-@author: MathieuXPS
+Run as a pipeline which vectorizes a collection of text with TF-IDF, then run feature selection with chi2
+and finally classifies with SVM. 
 '''
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2

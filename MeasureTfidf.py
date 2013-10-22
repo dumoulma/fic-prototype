@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 '''
-Created on 2013-01-21
+Perform classification of a corpus using TfidfVectorizer.
+Displays the metrics from the classification.
+'''
 
-@author: Mathieu Dumoulin
-'''
 import numpy as np
 
 from sklearn.datasets import load_files

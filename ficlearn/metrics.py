@@ -1,12 +1,11 @@
+#!/usr/bin/env python3
 '''
-Created on Feb 13, 2013
+Utility functions to help with computing metrics.
+'''
 
-@author: MathieuXPS
-'''
 import numpy as np
 from scipy import interp
 import pylab as pl
-
 from sklearn.cross_validation import StratifiedKFold
 from sklearn.metrics import roc_curve, auc
 from sklearn import svm
@@ -14,6 +13,9 @@ from sklearn import cross_validation
 from sklearn import metrics
 
 def crossValidationScores(clf, X, y, test_size=0.5, show_scores=False, random_state=0):
+    '''
+    Given a classifier, a feature matrix X and the target vector y, will print the cross-validation scores.
+    '''
     print("-----------------------------------------------")
     print("Show cross validation scores")   
     print("-----------------------------------------------")
@@ -33,13 +35,16 @@ def crossValidationScores(clf, X, y, test_size=0.5, show_scores=False, random_st
 
 ###############################################################################
 # Classification and ROC analysis
-def showRocAnalysis(X, Y, test_size=0.5, class_weight=None, random_state=0):
-    # Run classifier with crossvalidation and plot ROC curves
+def showRocAnalysis(X, y, test_size=0.5, class_weight=None, random_state=0):
+    '''
+        Perform a display the ROC Analysis given feature vectors X and the target vector y 
+    '''
+    #Run classifier with crossvalidation and plot ROC curves
     X_train, X_test, y_train, y_test = \
-        cross_validation.train_test_split(X, Y,
+        cross_validation.train_test_split(X, y,
                                           test_size=test_size, random_state=random_state)
     
-    cv = StratifiedKFold(Y, n_folds=5)
+    cv = StratifiedKFold(y, n_folds=5)
     classifier = svm.SVC(C=100.0, cache_size=200, class_weight=class_weight, coef0=0.0, degree=3,
                   gamma=0.0001, kernel='rbf', max_iter= -1, probability=True, shrinking=True,
                   tol=0.001, verbose=False).fit(X_train, y_train)

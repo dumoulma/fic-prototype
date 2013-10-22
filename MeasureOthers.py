@@ -1,15 +1,15 @@
+#!/usr/bin/env python3
 '''
-Created on 2013-01-21
+Perform classification of a corpus using BnsVectorizer.
+Displays the metrics from the classification.
+'''
 
-@author: Mathieu Dumoulin
-'''
 import numpy as np
-
-from sklearn.datasets import load_files
 import codecs as cs
-from sklearn.linear_model import BayesianRidge
 from sklearn import cross_validation
 from sklearn import metrics
+from sklearn.datasets import load_files
+from sklearn.linear_model import BayesianRidge
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
 from ficlearn.feature_extraction.text import BnsVectorizer

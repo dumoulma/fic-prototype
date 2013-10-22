@@ -1,21 +1,21 @@
+#!/usr/bin/env python3
 '''
-Created on 2013-01-21
+Perform classification of a corpus using BnsVectorizer.
+Displays the metrics from the classification.
 
-@author: Mathieu Dumoulin
-
-Small change!
+Old version...
 '''
-import numpy as np
 
-from sklearn.datasets import load_files
 import codecs as cs
+import numpy as np
 from sklearn import svm
 from sklearn import cross_validation
 from sklearn import metrics
+from sklearn.datasets import load_files
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
-from ficlearn import metrics as met
 from ficlearn.feature_extraction.text import BnsVectorizer
+from ficlearn import metrics as met
 
 def selectFeatures(X_train, X_test, y_train, k=None):
     print("n_features".ljust(15), ":", X_train.shape[1], "features")

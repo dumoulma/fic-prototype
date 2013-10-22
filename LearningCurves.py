@@ -1,23 +1,16 @@
+#!/usr/bin/env python3
 '''
-Created on Feb 15, 2013
+Show a plot of the learning curves from classifying a corpus using BnsVectorizer
+'''
 
-@author: MathieuXPS
-'''
-'''
-Created on 2013-01-21
-
-@author: Mathieu Dumoulin
-'''
 import numpy as np
-
-from sklearn.datasets import load_files
+import copy
 import codecs as cs
+from sklearn.datasets import load_files
 from sklearn import svm
 from sklearn import metrics
-from ficlearn.feature_extraction.text import BnsVectorizer
 from random import shuffle
-import copy
-
+from ficlearn.feature_extraction.text import BnsVectorizer
 
 if __name__ == '__main__':    
     print("-----------------------------------------------")
