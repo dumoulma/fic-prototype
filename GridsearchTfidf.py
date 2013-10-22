@@ -21,15 +21,17 @@ import codecs as cs
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)s %(message)s')
 
-corpus = "corpus5"
+corpus = "corpus6"
 label_names = ['relevant', 'spam']
 
 notices = load_files(corpus, categories=label_names, load_content=False)
-data = [cs.open(filename,'r','UTF-8').read() for filename in notices.filenames]
+data = [cs.open(filename, 'r', 'UTF-8').read() for filename in notices.filenames]
 n_samples = len(data)
 print("text read:{0}".format(n_samples))
 
-count = TfidfVectorizer(max_df=0.5,ngram_range=(1,1), stop_words='english')
+count = TfidfVectorizer(stop_words="english", charset_error='replace',
+                        ngram_range=(1, 1), strip_accents='unicode',
+                        max_df=0.5, min_df=3)
 X = count.fit_transform(data)
 Y = notices.target
 
@@ -38,10 +40,12 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, Y, test_size=0.6, random_state=0)
 
 # Set the parameters by cross-validation
-tuned_parameters = [{'kernel': ['rbf'], 'gamma': 10.0 ** np.arange(-4, -1),
-                     'C': 10.0 ** np.arange(-2, 3)},
-                    #{'kernel': ['linear'], }
-                    #{'kernel':['poly'], 'C':[0.1,1,10,100],}
+tuned_parameters = [{'gamma': 10.0 ** np.arange(-4, -1),
+                     'C': 10.0 ** np.arange(-2, 3), 
+                     'class_weight':[{0:7}], 
+                    },                    
+                    # {'kernel': ['linear'], }
+                    # {'kernel':['poly'], 'C':[0.1,1,10,100],}
                     ]
 
 scores = [

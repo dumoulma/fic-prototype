@@ -6,11 +6,11 @@ Created on 2013-01-21
 
 from sklearn.datasets import load_files
 from sklearn.feature_extraction.text import CountVectorizer
-from text import BnsTransformer
+from ficlearn.feature_extraction.text import BnsTransformer
 from sklearn import svm
 from sklearn import cross_validation
 from sklearn import metrics
-from metrics import crossValidationScores
+from ficlearn.metrics import crossValidationScores
 import codecs as cs
 
 if __name__ == '__main__':
